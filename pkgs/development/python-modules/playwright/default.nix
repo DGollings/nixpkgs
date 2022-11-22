@@ -28,7 +28,7 @@ let
   attrs.${system} or (throw "Unsupported system: ${system}");
   throwSystem = throw "Unsupported system: ${system}";
 
-  driverVersion = "1.27.1";
+  driverVersion = "1.28.0";
 
   driver = let
     suffix = {
@@ -45,10 +45,10 @@ let
     src = fetchurl {
       url = "https://playwright.azureedge.net/builds/driver/${filename}";
       sha256 = {
-        x86_64-linux = "0x71b4kb8hlyacixipgfbgjgrbmhckxpbmrs2xk8iis7n5kg7539";
-        aarch64-linux = "125lih7g2gj91k7j196wy5a5746wyfr8idj3ng369yh5wl7lfcfv";
-        x86_64-darwin = "0z2kww4iby1izkwn6z2ai94y87bkjvwak8awdmjm8sgg00pa9l1a";
-        aarch64-darwin = "0qajh4ac5lr1sznb2c471r5c5g2r0dk2pyqz8vhvnbk36r524h1h";
+        x86_64-linux = "0q4bmn8nh5skhhx7mayyx19lkv44vw38d57j518fcmarvs0mbvml";
+        aarch64-linux = "1dq5gxyycn2cqgabviygbw6jbnzgsyz8bl6d5c28bjj83s92k1jv";
+        x86_64-darwin = "0g05ssyl2b7k7z88wbhirj2j489adsd0jgin108sh4f1sajyxf1b";
+        aarch64-darwin = "0gi1c4shcyhgksa2jdcnb9mmb27zlqgarh7s51k6fbpd7yi62nl9";
       }.${system} or throwSystem;
     };
 
@@ -88,7 +88,7 @@ let
       file = fetchurl {
         url =
           "https://raw.githubusercontent.com/microsoft/playwright/v${driverVersion}/packages/playwright-core/browsers.json";
-        sha256 = "11a1n65l43nfyjn0qrsjjyjl7psvqa67k4kiv8x624faga4zl3mk";
+        sha256 = "1w3php0ai38lmbvs5bn8i68hjs0a73pa21xcpna81i6ycicnnhjx";
       };
       raw_data = fromJSON (readFile file);
     in
@@ -136,7 +136,7 @@ let
   upstream_firefox = fetchzip {
     url =
       "https://playwright.azureedge.net/builds/firefox/${browser_revs.firefox}/firefox-${suffix}.zip";
-    sha256 = "sha256-r1cCXxkIABU5BLP1Q6TBoE5CrNhmHApAEZT3ta+GaAU=";
+    sha256 = "sha256-Tyxud1LNqq2wNyqAcNeyb6iIzvhto5mrejay/DlXKEM=";
     stripRoot = true;
   };
   in runCommand ("playwright-browsers"
